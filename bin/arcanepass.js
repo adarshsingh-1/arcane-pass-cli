@@ -10,8 +10,8 @@ const program = new Command();
 const generator = new PasswordGenerator();
 
 program
-  .name('arcanapass')
-  .description('ArcanaPass - Stateless Password Generator')
+  .name('arcane-pass')
+  .description('ArcanePass - Stateless Password Generator')
   .version('1.0.0');
 
 program
