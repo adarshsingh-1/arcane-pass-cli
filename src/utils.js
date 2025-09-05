@@ -6,7 +6,7 @@ function displayPassword(password, hidden = true) {
     console.log(chalk.yellow("Password (hidden): ") + "*".repeat(password.length));
   } else {
     console.log(chalk.green("Password: ") + password);
-  }
+  } 
 }
 
 function displayStrength(strength) {

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "bin": {
-    "arcane-pass": "./bin/arcanapass.js"
+    "arcane-pass": "./bin/arcane-pass.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
