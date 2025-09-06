@@ -1,4 +1,4 @@
-# ArcanaPass CLI
+# ArcanePass CLI
 
 A stateless password generator CLI tool that creates deterministic passwords based on your master password and service name. No storage required - the same inputs always generate the same password.
 
