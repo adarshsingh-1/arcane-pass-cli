@@ -195,7 +195,7 @@ sudo yum install xclip      # CentOS/RHEL
 ```
 arcane-pass-cli/
 ├── bin/
-│   └── arcanapass.js       # CLI entry point
+│   └── arcane-pass.js       # CLI entry point
 ├── src/
 │   ├── generator.js        # Password generation logic
 │   └── utils.js           # Utility functions
