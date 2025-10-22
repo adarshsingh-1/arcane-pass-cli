@@ -208,4 +208,8 @@ arcane-pass-cli/
 2. Create a feature branch
 3. Make changes
 4. Test with `npm link`
+<<<<<<< HEAD
 5. Submit a pull request
+=======
+5. Submit a pull request
+>>>>>>> 42c30c3 (readlme updated)
