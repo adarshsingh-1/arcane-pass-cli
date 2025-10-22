@@ -1,4 +1,4 @@
-# ArcanePass CLI
+# Arcane-Pass CLI
 
 A stateless password generator CLI tool that creates deterministic passwords based on your master password and service name. No storage required - the same inputs always generate the same password.
 
@@ -32,9 +32,9 @@ npm link
 
 #### Generate Password
 ```bash
-arcanapass generate
+arcane-pass generate
 # or use alias
-arcanapass gen
+arcane-pass gen
 ```
 
 This will prompt you for:
@@ -43,55 +43,55 @@ This will prompt you for:
 
 #### Get Help
 ```bash
-arcanapass --help
-arcanapass generate --help
+arcane-pass --help
+arcane-pass generate --help
 ```
 
 #### Check Version
 ```bash
-arcanapass --version
+arcane-pass --version
 ```
 
 ### Command Options
 
 #### Generate with Service Name
 ```bash
-arcanapass generate -s gmail
-arcanapass generate --service facebook
+arcane-pass generate -s gmail
+arcane-pass generate --service facebook
 ```
 
 #### Generate with Custom Length
 ```bash
-arcanapass generate -s twitter -l 20
-arcanapass generate --service github --length 32
+arcane-pass generate -s twitter -l 20
+arcane-pass generate --service github --length 32
 ```
 
 #### Show Password (Visible)
 ```bash
-arcanapass generate -s linkedin --show
+arcane-pass generate -s linkedin --show
 ```
 *By default, passwords are hidden with asterisks*
 
 #### Copy to Clipboard
 ```bash
-arcanapass generate -s instagram --copy
-arcanapass generate -s reddit -c
+arcane-pass generate -s instagram --copy
+arcane-pass generate -s reddit -c
 ```
 
 #### Combine Options
 ```bash
 # Generate 24-character password for Gmail, show it, and copy to clipboard
-arcanapass generate -s gmail -l 24 --show --copy
+arcane-pass generate -s gmail -l 24 --show --copy
 
 # Generate password with prompts, copy to clipboard
-arcanapass generate --copy
+arcane-pass generate --copy
 ```
 
 ## Examples
 
 ### Example 1: Basic Usage
 ```bash
-$ arcanapass generate
+$ arcane-pass generate
 ? Enter service name: gmail
 ? Enter master password: ********
 
@@ -102,7 +102,7 @@ Strength: Strong
 
 ### Example 2: With Options
 ```bash
-$ arcanapass generate -s facebook -l 20 --show --copy
+$ arcane-pass generate -s facebook -l 20 --show --copy
 ? Enter master password: ********
 
 Password generated for: facebook
@@ -113,7 +113,7 @@ Password copied to clipboard!
 
 ### Example 3: Quick Service Setup
 ```bash
-$ arcanapass gen -s twitter --copy
+$ arcane-pass gen -s twitter --copy
 ? Enter master password: ********
 
 Password generated for: twitter
@@ -164,7 +164,7 @@ Default character set includes:
 ## Troubleshooting
 
 ### Command Not Found
-If you get `command not found: arcanapass`:
+If you get `command not found: arcane-pass`:
 ```bash
 npm link
 # or
@@ -195,7 +195,7 @@ sudo yum install xclip      # CentOS/RHEL
 ```
 arcane-pass-cli/
 ├── bin/
-│   └── arcane-pass.js       # CLI entry point
+│   └── arcane-pass.js      # CLI entry point
 ├── src/
 │   ├── generator.js        # Password generation logic
 │   └── utils.js           # Utility functions
@@ -209,4 +209,3 @@ arcane-pass-cli/
 3. Make changes
 4. Test with `npm link`
 5. Submit a pull request
-
