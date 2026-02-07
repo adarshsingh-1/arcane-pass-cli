@@ -1,5 +1,5 @@
-const { execSync } = require('child_process');
 const chalk = require('chalk');
+const clipboardy = require('clipboardy');
 
 function displayPassword(password, hidden = true) {
   if (hidden) {
@@ -16,13 +16,7 @@ function displayStrength(strength) {
 
 async function copyToClipboard(password) {
   try {
-    if (process.platform === 'darwin') {
-      execSync(`echo "${password}" | pbcopy`);
-    } else if (process.platform === 'linux') {
-      execSync(`echo "${password}" | xclip -selection clipboard`);
-    } else if (process.platform === 'win32') {
-      execSync(`echo "${password}" | clip`);
-    }
+    await clipboardy.write(password);
     console.log(chalk.cyan("Password copied to clipboard!"));
   } catch (error) {
     console.log(chalk.yellow("Could not copy to clipboard. Password displayed above."));

@@ -1,8 +1,8 @@
 {
   "name": "arcane-pass-cli",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Stateless, deterministic password generator CLI.",
+  "main": "src/index.js",
   "bin": {
     "arcane-pass": "./bin/arcane-pass.js"
   },

@@ -1,24 +1,15 @@
 # Arcane-Pass CLI
 
-A stateless password generator CLI tool that creates deterministic passwords based on your master password and service name. No storage required - the same inputs always generate the same password.
-
-## Features
-
-- 🔒 **Stateless**: No password storage, generates same password from same inputs
-- 🎯 **Deterministic**: Same master password + service = same password every time
-- 📋 **Clipboard Integration**: Copy passwords directly to clipboard
-- 🎨 **Colorful Output**: Easy-to-read colored terminal output
-- 🔐 **Secure**: Uses SHA-256 hashing for password generation
-- ⚡ **Fast**: Instant password generation with no dependencies on external services
+Arcane-Pass is a stateless password generator. The same master password and service name always produce the same password. Nothing is stored.
 
 ## Installation
 
-### Global Installation
+### Global Install
 ```bash
 npm install -g arcane-pass-cli
 ```
 
-### Development Installation
+### Local Development
 ```bash
 git clone <repository-url>
 cd arcane-pass-cli
@@ -28,188 +19,69 @@ npm link
 
 ## Usage
 
-### Basic Commands
-
-#### Generate Password
+### Generate a Password
 ```bash
 arcane-pass generate
-# or use alias
-arcane-pass gen
 ```
 
-This will prompt you for:
-- Service name (e.g., gmail, facebook, twitter)
+You will be prompted for:
+- Service name (for example: gmail, github)
 - Master password (hidden input)
 
-#### Get Help
+### Quick Options
+```bash
+arcane-pass generate -s gmail
+arcane-pass generate -s github -l 24
+arcane-pass generate -s twitter --show
+arcane-pass generate -s reddit --copy
+```
+
+### Help and Version
 ```bash
 arcane-pass --help
 arcane-pass generate --help
-```
-
-#### Check Version
-```bash
 arcane-pass --version
 ```
 
-### Command Options
+## Options
 
-#### Generate with Service Name
-```bash
-arcane-pass generate -s gmail
-arcane-pass generate --service facebook
-```
-
-#### Generate with Custom Length
-```bash
-arcane-pass generate -s twitter -l 20
-arcane-pass generate --service github --length 32
-```
-
-#### Show Password (Visible)
-```bash
-arcane-pass generate -s linkedin --show
-```
-*By default, passwords are hidden with asterisks*
-
-#### Copy to Clipboard
-```bash
-arcane-pass generate -s instagram --copy
-arcane-pass generate -s reddit -c
-```
-
-#### Combine Options
-```bash
-# Generate 24-character password for Gmail, show it, and copy to clipboard
-arcane-pass generate -s gmail -l 24 --show --copy
-
-# Generate password with prompts, copy to clipboard
-arcane-pass generate --copy
-```
+| Option | Alias | Default | Description |
+|--------|-------|---------|-------------|
+| `--service <name>` | `-s` | - | Service name (prompted if missing) |
+| `--length <number>` | `-l` | `16` | Password length (8 to 64) |
+| `--show` | - | `false` | Show the password in the output |
+| `--copy` | `-c` | `false` | Copy the password to clipboard |
 
 ## Examples
 
-### Example 1: Basic Usage
 ```bash
-$ arcane-pass generate
-? Enter service name: gmail
+$ arcane-pass generate -s gmail -l 20 --show --copy
 ? Enter master password: ********
 
 Password generated for: gmail
-Password (hidden): ****************
-Strength: Strong
-```
-
-### Example 2: With Options
-```bash
-$ arcane-pass generate -s facebook -l 20 --show --copy
-? Enter master password: ********
-
-Password generated for: facebook
 Password: K9#mL2vX8@nQ4sR7pY1Z
 Strength: Very Strong
 Password copied to clipboard!
 ```
 
-### Example 3: Quick Service Setup
-```bash
-$ arcane-pass gen -s twitter --copy
-? Enter master password: ********
-
-Password generated for: twitter
-Password (hidden): ****************
-Strength: Strong
-Password copied to clipboard!
-```
-
-## Command Reference
-
-| Command | Alias | Description |
-|---------|-------|-------------|
-| `generate` | `gen` | Generate a password for a service |
-| `--help` | `-h` | Show help information |
-| `--version` | `-V` | Show version number |
-
-### Generate Command Options
-
-| Option | Alias | Default | Description |
-|--------|-------|---------|-------------|
-| `--service <name>` | `-s` | - | Service name (prompts if not provided) |
-| `--length <number>` | `-l` | `16` | Password length |
-| `--show` | - | `false` | Display password visibly |
-| `--copy` | `-c` | `false` | Copy password to clipboard |
-
 ## How It Works
 
-1. **Input**: Takes your master password and service name
-2. **Hashing**: Combines inputs using SHA-256 cryptographic hashing
-3. **Generation**: Converts hash to password using character set
-4. **Output**: Same inputs always produce the same password
-
-### Character Set
-Default character set includes:
-- Uppercase letters: `A-Z`
-- Lowercase letters: `a-z` 
-- Numbers: `0-9`
-- Special characters: `!@#$%^&*`
+1. Combines the master password and service name.
+2. Hashes the input with SHA-256.
+3. Converts the hash into a password with a mixed character set.
 
 ## Security Notes
 
-- ✅ **No Storage**: Passwords are never stored anywhere
-- ✅ **Deterministic**: Same inputs = same password
-- ✅ **Cryptographic**: Uses SHA-256 for secure hashing
-- ⚠️ **Master Password**: Keep your master password secure
-- ⚠️ **Service Names**: Use consistent service names
+- Passwords are never stored.
+- Use a strong master password.
+- Keep service names consistent to reproduce the same password.
 
 ## Troubleshooting
 
 ### Command Not Found
-If you get `command not found: arcane-pass`:
 ```bash
 npm link
-# or
-npm install -g .
 ```
 
-### Dependencies Issues
-If you encounter module errors:
-```bash
-npm install chalk@4 inquirer@8
-```
-
-### Clipboard Not Working
-The clipboard feature requires:
-- **macOS**: Built-in `pbcopy`
-- **Linux**: Install `xclip`
-- **Windows**: Built-in `clip`
-
-Install xclip on Linux:
-```bash
-sudo apt-get install xclip  # Ubuntu/Debian
-sudo yum install xclip      # CentOS/RHEL
-```
-
-## Development
-
-### Project Structure
-```
-arcane-pass-cli/
-├── bin/
-│   └── arcane-pass.js      # CLI entry point
-├── src/
-│   ├── generator.js        # Password generation logic
-│   └── utils.js           # Utility functions
-├── package.json
-└── README.md
-```
-
-### Contributing
-1. Fork the repository
-2. Create a feature branch
-3. Make changes
-4. Test with `npm link`
-<<<<<<< HEAD
-5. Submit a pull request
-=======
-5. Submit a pull request
->>>>>>> 42c30c3 (readlme updated)
+### Clipboard Issues
+If clipboard copy fails, the password is still shown when you use `--show`.

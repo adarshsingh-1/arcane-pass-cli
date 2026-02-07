@@ -46,9 +46,8 @@ program
         }
       ]);
 
-      const passwordOptions = {
-        length: parseInt(options.length)
-      };
+      const length = Number(options.length);
+      const passwordOptions = { length };
 
       const password = generator.generatePassword(masterPassword, service, passwordOptions);
       const strength = generator.validateStrength(password);
